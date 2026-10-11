@@ -17,3 +17,4 @@ __pycache__/
 *.sqlite3-shm
 *.sqlite3-wal
 tray-runtime.json
+AGENTS.md
