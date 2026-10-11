@@ -1,0 +1,1730 @@
+{
+  "verified_at": "2026-10-10T14:04:32.869453+00:00",
+  "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/",
+  "schema_urls": [
+    "https://openapi.nexon.com/static/api/maplestory/14_ko_script20260917040003.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/15_ko_script20260618050040.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/16_ko_script20260723040144.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/59_ko_script20260917040055.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/17_ko_script20260918020020.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/62_ko_script20260821005015.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/18_ko_script20260622043839.yaml",
+    "https://openapi.nexon.com/static/api/maplestory/27_ko_script20251218035959.yaml"
+  ],
+  "excluded": [
+    {
+      "path": "/maplestory/legacy/ouid",
+      "reason": "Requires a separate legacy API key."
+    }
+  ],
+  "endpoints": {
+    "character/list": {
+      "category": "캐릭터 정보 조회",
+      "summary": "캐릭터 목록 조회",
+      "description": "계정의 보유 캐릭터 목록을 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [],
+      "account_bound": true
+    },
+    "user/achievement": {
+      "category": "캐릭터 정보 조회",
+      "summary": "업적 정보 조회",
+      "description": "계정의 업적 정보를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [],
+      "account_bound": true
+    },
+    "id": {
+      "category": "캐릭터 정보 조회",
+      "summary": "캐릭터 식별자(ocid) 조회",
+      "description": "캐릭터 식별자(ocid)를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "character_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 명"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/basic": {
+      "category": "캐릭터 정보 조회",
+      "summary": "기본 정보 조회",
+      "description": "기본 정보를 조회합니다.\n<br>2023년 12월 21일 데이터부터 조회할 수 있습니다.\n- 조회된 캐릭터 외형 이미지 URL에 쿼리 파리미터를 사용하여 캐릭터 이미지의 동작이나 감정표현을 변경하실 수 있습니다.\n",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/popularity": {
+      "category": "캐릭터 정보 조회",
+      "summary": "인기도 정보 조회",
+      "description": "인기도 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/stat": {
+      "category": "캐릭터 정보 조회",
+      "summary": "종합 능력치 정보 조회",
+      "description": "종합 능력치 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/hyper-stat": {
+      "category": "캐릭터 정보 조회",
+      "summary": "하이퍼스탯 정보 조회",
+      "description": "하이퍼스탯 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/propensity": {
+      "category": "캐릭터 정보 조회",
+      "summary": "성향 정보 조회",
+      "description": "성향 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/ability": {
+      "category": "캐릭터 정보 조회",
+      "summary": "어빌리티 정보 조회",
+      "description": "어빌리티 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/item-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 장비 정보 조회 (캐시 장비 제외)",
+      "description": "장착한 장비 중 캐시 장비를 제외한 나머지 장비 정보를 조회합니다.\n<br>2023년 12월 21일 데이터부터 조회할 수 있습니다.\n<br>훈장 외형, 칭호 외형 정보는 2025년 1월 16일 메이플스토리 점검 이후 데이터부터 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/cashitem-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 캐시 장비 정보 조회",
+      "description": "장착한 캐시 장비 정보를 조회합니다.\n<br>2023년 12월 21일 데이터부터 조회할 수 있습니다.\n<br>장착 중인 캐시 장비의 스킬 정보는 2025년 1월 16일 메이플스토리 점검 이후 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/symbol-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 심볼 정보 조회",
+      "description": "장착한 심볼 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/set-effect": {
+      "category": "캐릭터 정보 조회",
+      "summary": "적용 세트 효과 정보 조회",
+      "description": "적용받고 있는 세트 효과 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/beauty-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 헤어, 성형, 피부 정보 조회",
+      "description": "장착 중인 헤어, 성형, 피부 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/android-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 안드로이드 정보 조회",
+      "description": "장착한 안드로이드 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/pet-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 펫 정보 조회",
+      "description": "장착한 펫 및 펫 스킬, 장비 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/skill": {
+      "category": "캐릭터 정보 조회",
+      "summary": "스킬 정보 조회",
+      "description": "캐릭터 스킬과 하이퍼 스킬 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        },
+        {
+          "name": "character_skill_grade",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "default": "1",
+            "enum": [
+              "0",
+              "1",
+              "1.5",
+              "2",
+              "2.5",
+              "3",
+              "4",
+              "hyperpassive",
+              "hyperactive",
+              "5",
+              "6"
+            ]
+          },
+          "description": "조회하고자 하는 전직 차수\n- 0: 0차 스킬 및 제로 공용스킬\n- 1: 1차 스킬\n- 1.5: 1.5차 스킬\n- 2: 2차 스킬\n- 2.5: 2.5차 스킬\n- 3: 3차 스킬\n- 4: 4차 스킬 및 제로 알파/베타 스킬\n- hyperpassive: 하이퍼 패시브 스킬\n- hyperactive: 하이퍼 액티브 스킬\n- 5: 5차 스킬\n- 6: 6차 스킬\n"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/link-skill": {
+      "category": "캐릭터 정보 조회",
+      "summary": "장착 링크 스킬 정보 조회",
+      "description": "장착 링크 스킬 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/vmatrix": {
+      "category": "캐릭터 정보 조회",
+      "summary": "V매트릭스 정보 조회",
+      "description": "V매트릭스 슬롯 정보와 장착한 V코어 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/hexamatrix": {
+      "category": "캐릭터 정보 조회",
+      "summary": "HEXA 코어 정보 조회",
+      "description": "HEXA 매트릭스에 장착한 HEXA 코어 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/hexamatrix-stat": {
+      "category": "캐릭터 정보 조회",
+      "summary": "HEXA 매트릭스 설정 HEXA 스탯 정보 조회",
+      "description": "HEXA 매트릭스에 설정한 HEXA 스탯 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/dojang": {
+      "category": "캐릭터 정보 조회",
+      "summary": "무릉도장 최고 기록 정보 조회",
+      "description": "캐릭터 무릉도장 최고 기록 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/other-stat": {
+      "category": "캐릭터 정보 조회",
+      "summary": "기타 능력치 영향 요소 정보 조회",
+      "description": "능력치에 영향을 주는 요소 중 다른 조회에서 능력치 확인이 어려운 정보를 조회합니다. <br>2025년 08월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/ring-exchange-skill-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "링 익스체인지 스킬 등록 장비 조회",
+      "description": "링 익스체인지 스킬 등록 장비를 조회합니다. <br>2025년 08월 21일부터 2026년 3월 18일까지의 데이터를 조회할 수 있습니다.<br>2026년 3월 19일부터는 예비 특수 반지 장착 정보 조회를 사용해주세요.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "character/ring-reserve-skill-equipment": {
+      "category": "캐릭터 정보 조회",
+      "summary": "예비 특수 반지 장착 정보 조회",
+      "description": "예비 특수 반지 장착 정보를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=14",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "format": "date"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "user/union": {
+      "category": "유니온 정보 조회",
+      "summary": "유니온 정보 조회",
+      "description": "유니온 레벨 및 유니온 등급 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=15",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "user/union-raider": {
+      "category": "유니온 정보 조회",
+      "summary": "유니온 공격대 정보 조회",
+      "description": "유니온에 배치된 공격대원 효과 및 공격대 점령 효과 등 상세 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=15",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "user/union-artifact": {
+      "category": "유니온 정보 조회",
+      "summary": "유니온 아티팩트 정보 조회",
+      "description": "유니온 아티팩트 정보를 조회합니다. <br>2024년 01월 18일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=15",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "user/union-champion": {
+      "category": "유니온 정보 조회",
+      "summary": "유니온 챔피언 정보 조회",
+      "description": "유니온 챔피언 정보를 조회합니다.\n<br>2025년 02월 20일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=15",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "guild/id": {
+      "category": "길드 정보 조회",
+      "summary": "길드 식별자(oguild_id) 정보 조회",
+      "description": "길드 식별자(oguild_id) 정보를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=16",
+      "parameters": [
+        {
+          "name": "guild_name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "길드 명"
+        },
+        {
+          "name": "world_name",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "스카니아",
+              "베라",
+              "루나",
+              "제니스",
+              "크로아",
+              "유니온",
+              "엘리시움",
+              "이노시스",
+              "레드",
+              "오로라",
+              "아케인",
+              "노바",
+              "에오스",
+              "핼리오스",
+              "챌린저스",
+              "챌린저스2",
+              "챌린저스3",
+              "챌린저스4"
+            ]
+          },
+          "description": "월드 명\n- 2024년 12월 19일 이후 30일간 리부트, 리부트2 입력 시 에오스, 핼리오스로 연결됩니다.<br>리부트, 리부트2로 조회하시던 부분은 30일 이내 에오스, 헬리오스로 갱신 부탁드립니다.    \n"
+        }
+      ],
+      "account_bound": false
+    },
+    "guild/basic": {
+      "category": "길드 정보 조회",
+      "summary": "기본 정보 조회",
+      "description": "기본 정보를 조회합니다. <br>2023년 12월 21일 데이터부터 조회할 수 있습니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=16",
+      "parameters": [
+        {
+          "name": "oguild_id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "길드 식별자"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST, YYYY-MM-DD)"
+        }
+      ],
+      "account_bound": false
+    },
+    "battle-practice/replay-id": {
+      "category": "연무장 정보 조회",
+      "summary": "연무장 리플레이 식별자 조회",
+      "description": "캐릭터의 연무장 리플레이 식별자를 조회합니다.\n리플레이를 등록한 캐릭터에 대해서만 조회가 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=59",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        }
+      ],
+      "account_bound": false
+    },
+    "battle-practice/result": {
+      "category": "연무장 정보 조회",
+      "summary": "연무장 측정 결과 정보 조회",
+      "description": "연무장 측정 결과 정보를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=59",
+      "parameters": [
+        {
+          "name": "replay_id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "연무장 리플레이 고유 식별자"
+        }
+      ],
+      "account_bound": false
+    },
+    "battle-practice/skill-timeline": {
+      "category": "연무장 정보 조회",
+      "summary": "연무장 스킬 사용 내역 조회",
+      "description": "연무장 진행 간 스킬 사용 내역을 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=59",
+      "parameters": [
+        {
+          "name": "replay_id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "연무장 리플레이 고유 식별자"
+        },
+        {
+          "name": "page_no",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "description": "페이지 번호 (미입력 시 1페이지 조회)"
+        }
+      ],
+      "account_bound": false
+    },
+    "battle-practice/character-info": {
+      "category": "연무장 정보 조회",
+      "summary": "연무장 입장 시 캐릭터 능력치 관련 정보 조회",
+      "description": "연무장 입장 시의 캐릭터 능력치 관련 정보를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=59",
+      "parameters": [
+        {
+          "name": "replay_id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "연무장 리플레이 고유 식별자"
+        }
+      ],
+      "account_bound": false
+    },
+    "ouid": {
+      "category": "확률 정보 조회",
+      "summary": "계정 식별자(ouid) 조회",
+      "description": "계정 식별자(ouid)를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=17",
+      "parameters": [],
+      "account_bound": true
+    },
+    "history/starforce": {
+      "category": "확률 정보 조회",
+      "summary": "스타포스 강화 결과 조회",
+      "description": "스타포스 강화 결과를 조회합니다.<br>\n- 스타포스 강화 결과는 2023년 12월 27일 데이터부터 조회 가능하며, 최대 2년동안의 데이터만 제공됩니다.\n- 스타포스 확률 정보는 최대 5분 후 확인 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=17",
+      "parameters": [
+        {
+          "name": "count",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "한번에 가져오려는 결과의 갯수(최소 10, 최대 1000)"
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST) (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "페이징 처리를 위한 cursor. <br> 응답 값으로 받은 next_cursor를 사용하여 다음 데이터 리스트를 조회합니다. <br> (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        }
+      ],
+      "account_bound": true
+    },
+    "history/potential": {
+      "category": "확률 정보 조회",
+      "summary": "잠재능력 재설정 이용 결과 조회",
+      "description": "잠재능력 재설정 이용 결과를 조회합니다.<br>\n- 잠재능력 재설정 이용 결과는 2024년 01월 25일 데이터부터 조회 가능하며, 최대 2년동안의 데이터만 제공됩니다.\n- 잠재능력 재설정 정보는 최대 30분 후 확인 가능합니다.\n",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=17",
+      "parameters": [
+        {
+          "name": "count",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "default": 10
+          },
+          "description": "한번에 가져오려는 결과의 갯수(최소 10, 최대 1000)<br>* 옵션 재설정을 3회 진행한 결과가 포함될 경우 입력한 count보다 적은 수로 조회될 수 있습니다."
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST) (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "페이징 처리를 위한 cursor (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        }
+      ],
+      "account_bound": true
+    },
+    "history/cube": {
+      "category": "확률 정보 조회",
+      "summary": "큐브 및 특수 재화 사용 결과 조회",
+      "description": "큐브 사용 결과를 조회합니다.<br>\n- 큐브 사용 결과는 최근 2년 데이터만 조회 가능합니다.\n- 큐브 확률 정보는 최대 30분 후 확인 가능합니다.\n",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=17",
+      "parameters": [
+        {
+          "name": "count",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "default": 10
+          },
+          "description": "한번에 가져오려는 결과의 갯수(최소 10, 최대 1000)<br>* 옵션 재설정을 3회 진행한 결과가 포함될 경우 입력한 count보다 적은 수로 조회될 수 있습니다."
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST) (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "페이징 처리를 위한 cursor (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        }
+      ],
+      "account_bound": true
+    },
+    "history/soul-potential": {
+      "category": "확률 정보 조회",
+      "summary": "소울 잠재능력 재설정 이용 결과 조회",
+      "description": "소울 잠재능력 재설정 이용 결과를 조회합니다.<br>\n- 소울 잠재능력 재설정 이용 결과는 최근 2년 데이터만 조회 가능합니다. - 소울 잠재능력 재설정 이용 정보는 최대 30분 후 확인 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=17",
+      "parameters": [
+        {
+          "name": "count",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "default": 10
+          },
+          "description": "한번에 가져오려는 결과의 갯수(최소 10, 최대 1000)<br>* 옵션 재설정을 3회 진행한 결과가 포함될 경우 입력한 count보다 적은 수로 조회될 수 있습니다."
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST) (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "페이징 처리를 위한 cursor (date와 cursor 파라미터 중 1개 이상은 필수 입력)"
+        }
+      ],
+      "account_bound": true
+    },
+    "scheduler/character-state": {
+      "category": "스케줄러 정보 조회",
+      "summary": "캐릭터의 스케줄러 정보 조회",
+      "description": "캐릭터에 대한 스케줄러의 수행 현황 정보를 조회하는 API입니다.<br> - 스케줄러 정보는 실시간 조회 및 이전 일자 조회가 가능하며, 조회 요청일 기준 최대 14일 전까지의 데이터만 조회 가능합니다.<br> - 스케줄러 정보 중 길드 콘텐츠, 에픽던전, 무릉도장, 보스 콘텐츠 관련 정보는 각 콘텐츠의 완료 시에 갱신되며, 그 외 콘텐츠 및 퀘스트 관련 정보는 캐릭터가 접속 중 및 접속 종료 시 갱신됩니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=62",
+      "parameters": [
+        {
+          "name": "ocid",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자<br> 자신의 계정에 속한 캐릭터만 조회가 가능합니다."
+        },
+        {
+          "name": "date",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (YYYY-MM-DD), 미입력 시 오늘 날짜<br>캐릭터가 해당 기준일에 접속하지 않은 경우, 응답 결과가 없을 수 있음"
+        }
+      ],
+      "account_bound": true
+    },
+    "ranking/overall": {
+      "category": "랭킹 정보 조회",
+      "summary": "종합 랭킹 정보 조회",
+      "description": "종합 랭킹 정보를 조회합니다.<br> - 종합 랭킹 정보는 최근 2년 데이터만 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=18",
+      "parameters": [
+        {
+          "name": "date",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST)"
+        },
+        {
+          "name": "world_name",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "스카니아",
+              "베라",
+              "루나",
+              "제니스",
+              "크로아",
+              "유니온",
+              "엘리시움",
+              "이노시스",
+              "레드",
+              "오로라",
+              "아케인",
+              "노바",
+              "에오스",
+              "핼리오스",
+              "챌린저스",
+              "챌린저스2",
+              "챌린저스3",
+              "챌린저스4"
+            ]
+          },
+          "description": "월드 명\n- 2024년 12월 19일 이후 30일간 리부트, 리부트2 입력 시 에오스, 핼리오스로 연결됩니다.<br>리부트, 리부트2로 조회하시던 부분은 30일 이내 에오스, 헬리오스로 갱신 부탁드립니다.    \n"
+        },
+        {
+          "name": "world_type",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "byte"
+          },
+          "description": "월드 타입 (0:일반, 1:에오스,핼리오스) (기본 값은 0이며, world_name 입력 시 미 반영)"
+        },
+        {
+          "name": "class",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "초보자-전체 전직",
+              "전사-전체 전직",
+              "전사-검사",
+              "전사-파이터",
+              "전사-페이지",
+              "전사-스피어맨",
+              "전사-크루세이더",
+              "전사-나이트",
+              "전사-버서커",
+              "전사-히어로",
+              "전사-팔라딘",
+              "전사-다크나이트",
+              "마법사-전체 전직",
+              "마법사-매지션",
+              "마법사-위자드(불,독)",
+              "마법사-위자드(썬,콜)",
+              "마법사-클레릭",
+              "마법사-메이지(불,독)",
+              "마법사-메이지(썬,콜)",
+              "마법사-프리스트",
+              "마법사-아크메이지(불,독)",
+              "마법사-아크메이지(썬,콜)",
+              "마법사-비숍",
+              "궁수-전체 전직",
+              "궁수-아처",
+              "궁수-헌터",
+              "궁수-사수",
+              "궁수-레인저",
+              "궁수-저격수",
+              "궁수-보우마스터",
+              "궁수-신궁",
+              "궁수-아처(패스파인더)",
+              "궁수-에인션트아처",
+              "궁수-체이서",
+              "궁수-패스파인더",
+              "도적-전체 전직",
+              "도적-로그",
+              "도적-어쌔신",
+              "도적-시프",
+              "도적-허밋",
+              "도적-시프마스터",
+              "도적-나이트로드",
+              "도적-섀도어",
+              "도적-세미듀어러",
+              "도적-듀어러",
+              "도적-듀얼마스터",
+              "도적-슬래셔",
+              "도적-듀얼블레이더",
+              "해적-전체 전직",
+              "해적-해적",
+              "해적-인파이터",
+              "해적-건슬링거",
+              "해적-캐논슈터",
+              "해적-버커니어",
+              "해적-발키리",
+              "해적-캐논블래스터",
+              "해적-바이퍼",
+              "해적-캡틴",
+              "해적-캐논마스터",
+              "기사단-전체 전직",
+              "기사단-노블레스",
+              "기사단-소울마스터",
+              "기사단-플레임위자드",
+              "기사단-윈드브레이커",
+              "기사단-나이트워커",
+              "기사단-스트라이커",
+              "기사단-미하일",
+              "아란-전체 전직",
+              "에반-전체 전직",
+              "레지스탕스-전체 전직",
+              "레지스탕스-시티즌",
+              "레지스탕스-배틀메이지",
+              "레지스탕스-와일드헌터",
+              "레지스탕스-메카닉",
+              "레지스탕스-데몬슬레이어",
+              "레지스탕스-데몬어벤져",
+              "레지스탕스-제논",
+              "레지스탕스-블래스터",
+              "메르세데스-전체 전직",
+              "팬텀-전체 전직",
+              "루미너스-전체 전직",
+              "카이저-전체 전직",
+              "엔젤릭버스터-전체 전직",
+              "초월자-전체 전직",
+              "초월자-제로",
+              "은월-전체 전직",
+              "프렌즈 월드-전체 전직",
+              "프렌즈 월드-키네시스",
+              "카데나-전체 전직",
+              "일리움-전체 전직",
+              "아크-전체 전직",
+              "호영-전체 전직",
+              "아델-전체 전직",
+              "카인-전체 전직",
+              "라라-전체 전직",
+              "칼리-전체 전직",
+              "렌-전체 전직",
+              "레테-전체 전직"
+            ]
+          },
+          "description": "직업 및 전직"
+        },
+        {
+          "name": "ocid",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "페이지 번호"
+        }
+      ],
+      "account_bound": false
+    },
+    "ranking/union": {
+      "category": "랭킹 정보 조회",
+      "summary": "유니온 랭킹 정보 조회",
+      "description": "유니온 랭킹 정보를 조회합니다.<br> - 유니온 랭킹 정보는 최근 2년 데이터만 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=18",
+      "parameters": [
+        {
+          "name": "date",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST)"
+        },
+        {
+          "name": "world_name",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "스카니아",
+              "베라",
+              "루나",
+              "제니스",
+              "크로아",
+              "유니온",
+              "엘리시움",
+              "이노시스",
+              "레드",
+              "오로라",
+              "아케인",
+              "노바",
+              "에오스",
+              "핼리오스"
+            ]
+          },
+          "description": "월드 명\n- 2024년 12월 19일 이후 30일간 리부트, 리부트2 입력 시 에오스, 핼리오스로 연결됩니다.<br>리부트, 리부트2로 조회하시던 부분은 30일 이내 에오스, 헬리오스로 갱신 부탁드립니다.    \n"
+        },
+        {
+          "name": "ocid",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "페이지 번호"
+        }
+      ],
+      "account_bound": false
+    },
+    "ranking/guild": {
+      "category": "랭킹 정보 조회",
+      "summary": "길드 랭킹 정보 조회",
+      "description": "길드 랭킹 정보를 조회합니다.<br> - 길드 랭킹 정보는 최근 2년 데이터만 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=18",
+      "parameters": [
+        {
+          "name": "date",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST)"
+        },
+        {
+          "name": "world_name",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "스카니아",
+              "베라",
+              "루나",
+              "제니스",
+              "크로아",
+              "유니온",
+              "엘리시움",
+              "이노시스",
+              "레드",
+              "오로라",
+              "아케인",
+              "노바",
+              "에오스",
+              "핼리오스",
+              "챌린저스",
+              "챌린저스2",
+              "챌린저스3",
+              "챌린저스4"
+            ]
+          },
+          "description": "월드 명\n- 2024년 12월 19일 이후 30일간 리부트, 리부트2 입력 시 에오스, 핼리오스로 연결됩니다.<br>리부트, 리부트2로 조회하시던 부분은 30일 이내 에오스, 헬리오스로 갱신 부탁드립니다.    \n"
+        },
+        {
+          "name": "ranking_type",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "format": "byte"
+          },
+          "description": "랭킹 타입 (0:주간 명성치, 1:플래그 레이스, 2:지하 수로)"
+        },
+        {
+          "name": "guild_name",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "길드 명"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "페이지 번호"
+        }
+      ],
+      "account_bound": false
+    },
+    "ranking/dojang": {
+      "category": "랭킹 정보 조회",
+      "summary": "무릉도장 랭킹 정보 조회",
+      "description": "무릉도장 랭킹 정보를 조회합니다.<br> - 무릉도장 랭킹 정보는 최근 2년 데이터만 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=18",
+      "parameters": [
+        {
+          "name": "date",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST)"
+        },
+        {
+          "name": "world_name",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "스카니아",
+              "베라",
+              "루나",
+              "제니스",
+              "크로아",
+              "유니온",
+              "엘리시움",
+              "이노시스",
+              "레드",
+              "오로라",
+              "아케인",
+              "노바",
+              "에오스",
+              "핼리오스",
+              "챌린저스",
+              "챌린저스2",
+              "챌린저스3",
+              "챌린저스4"
+            ]
+          },
+          "description": "월드 명\n- 2024년 12월 19일 이후 30일간 리부트, 리부트2 입력 시 에오스, 핼리오스로 연결됩니다.<br>리부트, 리부트2로 조회하시던 부분은 30일 이내 에오스, 헬리오스로 갱신 부탁드립니다.    \n"
+        },
+        {
+          "name": "difficulty",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "구간 (0:일반, 1:통달)"
+        },
+        {
+          "name": "class",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "초보자-전체 전직",
+              "전사-전체 전직",
+              "전사-검사",
+              "전사-파이터",
+              "전사-페이지",
+              "전사-스피어맨",
+              "전사-크루세이더",
+              "전사-나이트",
+              "전사-버서커",
+              "전사-히어로",
+              "전사-팔라딘",
+              "전사-다크나이트",
+              "마법사-전체 전직",
+              "마법사-매지션",
+              "마법사-위자드(불,독)",
+              "마법사-위자드(썬,콜)",
+              "마법사-클레릭",
+              "마법사-메이지(불,독)",
+              "마법사-메이지(썬,콜)",
+              "마법사-프리스트",
+              "마법사-아크메이지(불,독)",
+              "마법사-아크메이지(썬,콜)",
+              "마법사-비숍",
+              "궁수-전체 전직",
+              "궁수-아처",
+              "궁수-헌터",
+              "궁수-사수",
+              "궁수-레인저",
+              "궁수-저격수",
+              "궁수-보우마스터",
+              "궁수-신궁",
+              "궁수-아처(패스파인더)",
+              "궁수-에인션트아처",
+              "궁수-체이서",
+              "궁수-패스파인더",
+              "도적-전체 전직",
+              "도적-로그",
+              "도적-어쌔신",
+              "도적-시프",
+              "도적-허밋",
+              "도적-시프마스터",
+              "도적-나이트로드",
+              "도적-섀도어",
+              "도적-세미듀어러",
+              "도적-듀어러",
+              "도적-듀얼마스터",
+              "도적-슬래셔",
+              "도적-듀얼블레이더",
+              "해적-전체 전직",
+              "해적-해적",
+              "해적-인파이터",
+              "해적-건슬링거",
+              "해적-캐논슈터",
+              "해적-버커니어",
+              "해적-발키리",
+              "해적-캐논블래스터",
+              "해적-바이퍼",
+              "해적-캡틴",
+              "해적-캐논마스터",
+              "기사단-전체 전직",
+              "기사단-노블레스",
+              "기사단-소울마스터",
+              "기사단-플레임위자드",
+              "기사단-윈드브레이커",
+              "기사단-나이트워커",
+              "기사단-스트라이커",
+              "기사단-미하일",
+              "아란-전체 전직",
+              "에반-전체 전직",
+              "레지스탕스-전체 전직",
+              "레지스탕스-시티즌",
+              "레지스탕스-배틀메이지",
+              "레지스탕스-와일드헌터",
+              "레지스탕스-메카닉",
+              "레지스탕스-데몬슬레이어",
+              "레지스탕스-데몬어벤져",
+              "레지스탕스-제논",
+              "레지스탕스-블래스터",
+              "메르세데스-전체 전직",
+              "팬텀-전체 전직",
+              "루미너스-전체 전직",
+              "카이저-전체 전직",
+              "엔젤릭버스터-전체 전직",
+              "초월자-전체 전직",
+              "초월자-제로",
+              "은월-전체 전직",
+              "프렌즈 월드-전체 전직",
+              "프렌즈 월드-키네시스",
+              "카데나-전체 전직",
+              "일리움-전체 전직",
+              "아크-전체 전직",
+              "호영-전체 전직",
+              "아델-전체 전직",
+              "카인-전체 전직",
+              "라라-전체 전직",
+              "칼리-전체 전직",
+              "렌-전체 전직",
+              "레테-전체 전직"
+            ]
+          },
+          "description": "직업 및 전직"
+        },
+        {
+          "name": "ocid",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "페이지 번호"
+        }
+      ],
+      "account_bound": false
+    },
+    "ranking/theseed": {
+      "category": "랭킹 정보 조회",
+      "summary": "더 시드 랭킹 정보 조회",
+      "description": "더 시드 랭킹 정보를 조회합니다.<br> - 더 시드 랭킹 정보는 최근 2년 데이터만 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=18",
+      "parameters": [
+        {
+          "name": "date",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST)"
+        },
+        {
+          "name": "world_name",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "스카니아",
+              "베라",
+              "루나",
+              "제니스",
+              "크로아",
+              "유니온",
+              "엘리시움",
+              "이노시스",
+              "레드",
+              "오로라",
+              "아케인",
+              "노바",
+              "에오스",
+              "핼리오스",
+              "챌린저스",
+              "챌린저스2",
+              "챌린저스3",
+              "챌린저스4"
+            ]
+          },
+          "description": "월드 명\n- 2024년 12월 19일 이후 30일간 리부트, 리부트2 입력 시 에오스, 핼리오스로 연결됩니다.<br>리부트, 리부트2로 조회하시던 부분은 30일 이내 에오스, 헬리오스로 갱신 부탁드립니다.    \n"
+        },
+        {
+          "name": "ocid",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "페이지 번호"
+        }
+      ],
+      "account_bound": false
+    },
+    "ranking/achievement": {
+      "category": "랭킹 정보 조회",
+      "summary": "업적 랭킹 정보 조회",
+      "description": "업적 랭킹 정보를 조회합니다.<br> - 업적 랭킹 정보는 최근 2년 데이터만 조회 가능합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=18",
+      "parameters": [
+        {
+          "name": "date",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "description": "조회 기준일 (KST)"
+        },
+        {
+          "name": "ocid",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "description": "캐릭터 식별자"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "number",
+            "format": "int32"
+          },
+          "description": "페이지 번호"
+        }
+      ],
+      "account_bound": false
+    },
+    "notice": {
+      "category": "공지 정보 조회",
+      "summary": "공지사항 목록 조회",
+      "description": "메이플스토리 공지사항에 최근 등록된 게시글 20개를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [],
+      "account_bound": false
+    },
+    "notice/detail": {
+      "category": "공지 정보 조회",
+      "summary": "공지사항 상세 조회",
+      "description": "메이플스토리 공지사항 게시글 세부 사항을 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [
+        {
+          "name": "notice_id",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "format": "int64"
+          },
+          "description": "공지 식별자"
+        }
+      ],
+      "account_bound": false
+    },
+    "notice-update": {
+      "category": "공지 정보 조회",
+      "summary": "업데이트 목록 조회",
+      "description": "메이플스토리 업데이트에 최근 등록된 게시글 20개를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [],
+      "account_bound": false
+    },
+    "notice-update/detail": {
+      "category": "공지 정보 조회",
+      "summary": "업데이트 상세 조회",
+      "description": "메이플스토리 업데이트 게시글 세부 사항을 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [
+        {
+          "name": "notice_id",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "format": "int64"
+          },
+          "description": "공지 식별자"
+        }
+      ],
+      "account_bound": false
+    },
+    "notice-event": {
+      "category": "공지 정보 조회",
+      "summary": "진행 중 이벤트 목록 조회",
+      "description": "메이플스토리 진행 중 이벤트에 최근 등록된 공지사항 20개를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [],
+      "account_bound": false
+    },
+    "notice-event/detail": {
+      "category": "공지 정보 조회",
+      "summary": "진행 중 이벤트 상세 조회",
+      "description": "메이플스토리 진행 중 이벤트 게시글 세부 사항을 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [
+        {
+          "name": "notice_id",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "format": "int64"
+          },
+          "description": "공지 식별자"
+        }
+      ],
+      "account_bound": false
+    },
+    "notice-cashshop": {
+      "category": "공지 정보 조회",
+      "summary": "캐시샵 공지 목록 조회",
+      "description": "메이플스토리 캐시샵 공지에 최근 등록된 공지사항 20개를 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [],
+      "account_bound": false
+    },
+    "notice-cashshop/detail": {
+      "category": "공지 정보 조회",
+      "summary": "캐시샵 공지 상세 조회",
+      "description": "메이플스토리 캐시샵 공지 게시글 세부 사항을 조회합니다.",
+      "documentation_url": "https://openapi.nexon.com/ko/game/maplestory/?id=27",
+      "parameters": [
+        {
+          "name": "notice_id",
+          "required": true,
+          "schema": {
+            "type": "number",
+            "format": "int64"
+          },
+          "description": "공지 식별자"
+        }
+      ],
+      "account_bound": false
+    }
+  }
+}

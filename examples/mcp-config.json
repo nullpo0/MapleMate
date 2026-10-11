@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "maple-mcp": {
+      "command": "C:\\path\\to\\MapleMate\\MapleMate-mcp.exe",
+      "args": [
+        "--data-dir",
+        "C:\\Users\\your-name\\AppData\\Local\\MapleMate",
+        "serve"
+      ]
+    }
+  }
+}

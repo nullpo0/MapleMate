@@ -1,0 +1,11 @@
+interface:
+  display_name: "MapleMate"
+  short_description: "메이플 질문에 공식 정보·캐릭터 조회·화면·계산을 연결"
+  default_prompt: "$maplemate 메이플에서 궁금한 내용을 필요한 정보와 근거로 확인해 줘."
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "maple-mcp"
+      description: "MapleMate가 설치한 로컬 stdio MCP"
