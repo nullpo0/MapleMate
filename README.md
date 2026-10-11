@@ -6,7 +6,7 @@ Codex와 Claude Desktop에 메이플스토리 정보와 계산 도구를 연결�
 
 **Windows 10/11 x64**에서 사용합니다. Codex 또는 Claude Desktop/code와 Nexon openAPI Key(서비스 단계 키 권장)는 별도로 준비하세요.
 
-1. GitHub Releases에서 `MapleMate-1.0.0-windows-x64.zip`을 내려받아 **폴더 전체를 압축 해제**합니다.
+1. GitHub Releases에서 `MapleMate-1.0.1-windows-x64.zip`을 내려받아 **폴더 전체를 압축 해제**합니다.
 2. `MapleMate.exe`를 실행하고 Nexon API Key를 저장합니다.
 3. 설정에서 **Codex 연결** 또는 **Claude Desktop 연결**을 누릅니다.
 4. 연결한 AI 앱을 재시작하고 질문합니다.
@@ -33,3 +33,11 @@ API 키는 Windows DPAPI로 암호화합니다. 요청한 게임 이미지와 �
 
 
 공식 자료: [Nexon Open API](https://openapi.nexon.com/ko/game/maplestory/), [Windows 화면 캡처](https://learn.microsoft.com/en-us/windows/apps/develop/media-authoring-processing/screen-capture), [로컬 MCP 연결](https://modelcontextprotocol.io/docs/develop/connect-local-servers).
+
+## License
+
+MapleMate의 자체 코드와 maplemate skill은 [MIT License](LICENSE)를 따릅니다. Copyright (c) 2026 nullpo0.
+
+외부 라이브러리는 각각의 라이선스를 유지하며, Nexon API 데이터·메이플스토리 이미지·상표 등의 권리는 MIT 적용 범위에 포함되지 않습니다. 이 앱은 Nexon의 공식 제품이나 제휴 서비스가 아닙니다. 데이터 출처: NEXON Open API.
+
+배포 ZIP에는 라이선스 본문, 외부 라이브러리 고지, 앱 소스와 pystray 소스를 포함합니다. 자세한 내용과 재빌드 방법은 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)를 참고하세요.

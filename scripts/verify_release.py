@@ -21,7 +21,15 @@ def check_public_path(path):
 
 
 def check_source():
-    version = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]
+    version = project["version"]
+    if project.get("license") != "MIT" or "LICENSE" not in project.get("license-files", []):
+        raise ValueError("MIT package metadata is missing")
+    license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
+    if not license_text.startswith("MIT License\n") or "Copyright (c) 2026 nullpo0" not in license_text:
+        raise ValueError("MIT license text is missing")
+    if not (ROOT / "THIRD_PARTY_NOTICES.md").is_file():
+        raise ValueError("Third-party notices are missing")
     module = (ROOT / "src" / "maplemate" / "__init__.py").read_text(encoding="utf-8")
     if f'__version__ = "{version}"' not in module:
         raise ValueError("Package and project versions disagree")
@@ -43,13 +51,19 @@ def check_source():
 
 
 def check_bundle(bundle):
-    for name in ("MapleMate.exe", "MapleMate-mcp.exe", "README.md", "CHANGELOG.md"):
+    for name in ("MapleMate.exe", "MapleMate-mcp.exe", "README.md", "CHANGELOG.md", "LICENSE", "THIRD_PARTY_NOTICES.md"):
         if not (bundle / name).is_file():
             raise ValueError(f"Missing bundle file: {name}")
     if (bundle / "README.md").read_bytes() != (ROOT / "README.md").read_bytes():
         raise ValueError("Bundled README differs from source")
     if (bundle / "CHANGELOG.md").read_bytes() != (ROOT / "CHANGELOG.md").read_bytes():
         raise ValueError("Bundled CHANGELOG differs from source")
+    for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+        if (bundle / name).read_bytes() != (ROOT / name).read_bytes():
+            raise ValueError(f"Bundled {name} differs from source")
+    from package_notices import check_notices
+    version = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
+    check_notices(bundle, version)
     packaged = bundle / "_internal" / "maplemate" / "skills" / "maplemate"
     if list(bundle.rglob("SKILL.md")) != [packaged / "SKILL.md"]:
         raise ValueError("Bundle must contain exactly one maplemate skill")
@@ -77,6 +91,9 @@ def check_archive(archive, version):
             if path.is_absolute() or ".." in path.parts or not path.parts or path.parts[0] != "MapleMate":
                 raise ValueError("Unsafe or unexpected ZIP path")
             check_public_path(path)
+        for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+            if package.read("MapleMate/" + name) != (ROOT / name).read_bytes():
+                raise ValueError("Archive license or notices differ")
     expected = f"{hashlib.sha256(archive.read_bytes()).hexdigest()}  {archive.name}\n"
     if archive.with_suffix(".zip.sha256").read_text(encoding="ascii") != expected:
         raise ValueError("Archive checksum does not match")

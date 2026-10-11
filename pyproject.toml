@@ -1,12 +1,14 @@
 [build-system]
-requires = ["setuptools>=75"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "maplemate"
-version = "1.0.0"
+version = "1.0.1"
 description = "Windows tray companion with Maple-mcp and MapleStory skills"
 requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
 dependencies = ["mcp>=1.20,<2", "httpx>=0.28,<1", "numpy>=2,<3", "Pillow>=11,<13", "pystray>=0.19.5,<0.20; sys_platform == 'win32'", "windows-capture>=2.0.1,<3; sys_platform == 'win32'"]
 
 [project.optional-dependencies]

@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 from verify_release import check_archive, check_bundle, check_source
+from package_notices import package_notices
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -28,6 +29,9 @@ def main():
             raise SystemExit("Incomplete release bundle.")
     shutil.copyfile(ROOT / "README.md", bundle / "README.md")
     shutil.copyfile(ROOT / "CHANGELOG.md", bundle / "CHANGELOG.md")
+    for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+        shutil.copyfile(ROOT / name, bundle / name)
+    package_notices(ROOT, bundle, version)
     check_bundle(bundle)
     archive = Path(shutil.make_archive(str(output / f"MapleMate-{version}-windows-x64"),
                                        "zip", root_dir=bundle.parent, base_dir=bundle.name))

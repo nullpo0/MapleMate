@@ -35,6 +35,8 @@ class ReleaseTests(unittest.TestCase):
                 check_archive(archive, "1.0.0")
             with zipfile.ZipFile(archive, "w") as package:
                 package.writestr("MapleMate/README.md", "synthetic")
+                for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+                    package.write(Path(__file__).resolve().parents[1] / name, "MapleMate/" + name)
             checksum.write_text("wrong", encoding="ascii")
             with self.assertRaisesRegex(ValueError, "checksum"):
                 check_archive(archive, "1.0.0")
