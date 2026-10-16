@@ -176,7 +176,7 @@ class SettingsWindow:
             status = client(self.config).status()
         except ClientSetupError:
             return "확인 필요"
-        return {"registered": "연결됨", "not_registered": "미연결", "disabled": "활성화 필요", "different_settings": "다시 연결 필요"}.get(status, "확인 필요")
+        return {"registered": "등록됨", "not_registered": "미등록", "disabled": "활성화 필요", "different_settings": "다시 등록 필요"}.get(status, "확인 필요")
 
     def _connection(self):
         configured = key_configured(self.config.data_dir)
@@ -215,11 +215,11 @@ class SettingsWindow:
             install_maplemate_skill()
         except ClientSetupError as error:
             return "Codex 연결 설정 완료. " + str(error)
-        return "Codex 연결 완료 · Codex를 다시 시작하세요." if status == "registered" else "Codex에서 MapleMate MCP를 활성화하세요."
+        return "Codex 설정 등록 완료 · 앱을 다시 시작하세요." if status == "registered" else "Codex에서 MapleMate MCP를 활성화하세요."
 
     def _connect_claude(self):
         ClaudeDesktopSetup(self.config).install()
-        return "Claude Desktop 연결 완료 · 앱을 다시 시작하세요."
+        return "Claude 설정 등록 완료 · 완전히 종료 후 다시 실행하세요."
 
     def _records(self):
         names = self.store.character_names()

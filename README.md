@@ -6,10 +6,12 @@ Codex와 Claude Desktop에 메이플스토리 정보와 계산 도구를 연결�
 
 **Windows 10/11 x64**에서 사용합니다. Codex 또는 Claude Desktop/code와 Nexon openAPI Key(서비스 단계 키 권장)는 별도로 준비하세요.
 
-1. GitHub Releases에서 `MapleMate-1.0.1-windows-x64.zip`을 내려받아 **폴더 전체를 압축 해제**합니다.
+1. GitHub Releases에서 `MapleMate-1.0.2-windows-x64.zip`을 내려받아 **폴더 전체를 압축 해제**합니다.
 2. `MapleMate.exe`를 실행하고 Nexon API Key를 저장합니다.
 3. 설정에서 **Codex 연결** 또는 **Claude Desktop 연결**을 누릅니다.
-4. 연결한 AI 앱을 재시작하고 질문합니다.
+4. 연결한 AI 앱을 완전히 종료한 뒤 다시 실행하고 질문합니다.
+
+Claude Desktop의 일반 설치와 MSIX 패키지 설치 설정 경로를 자동으로 구분합니다. 화면의 **등록됨**은 설정 파일에 MCP 실행 정보를 저장했다는 뜻이며, AI 앱에서 실제 MCP 도구가 나타나는지는 재시작 후 확인하세요.
 
 ```text
 Codex: $maplemate 지금 접속 중인 캐릭터 정보 정리해줘

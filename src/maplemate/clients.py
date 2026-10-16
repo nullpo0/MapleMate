@@ -8,6 +8,7 @@ import re
 import tomllib
 import uuid
 from .config import Config, managed_data_directory
+from .client_paths import ClaudeConfigPathError, claude_config_path
 from .launch import command_for
 
 SERVER_NAME = "maple-mcp"
@@ -141,8 +142,10 @@ class CodexSetup:
 class ClaudeDesktopSetup:
     def __init__(self, config: Config, directory: Path | None = None):
         self.config = config
-        base = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming")) / "Claude"
-        self.path = (directory or base) / "claude_desktop_config.json"
+        try:
+            self.path = directory / "claude_desktop_config.json" if directory is not None else claude_config_path()
+        except ClaudeConfigPathError as error:
+            raise ClientSetupError(str(error)) from None
 
     def _parsed(self) -> tuple[bytes, dict]:
         original = _read(self.path)

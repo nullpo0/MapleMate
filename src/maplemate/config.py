@@ -5,12 +5,17 @@ import sys
 import json
 import tomllib
 from pathlib import Path
+from .client_paths import ClaudeConfigPathError, claude_config_path
 
 
 def linked_data_directory() -> Path | None:
     """Reuse this app's existing AI connection when a source user opens a ZIP."""
     codex = Path(os.environ.get("CODEX_HOME") or Path.home() / ".codex") / "config.toml"
-    claude = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming")) / "Claude" / "claude_desktop_config.json"
+    try:
+        claude = claude_config_path()
+    except ClaudeConfigPathError:
+        # Ambiguous/unreadable Claude profiles must not pick an unrelated state.
+        return None
     candidates = set()
     for path, section, parse in ((codex, "mcp_servers", tomllib.loads), (claude, "mcpServers", json.loads)):
         try:

@@ -56,9 +56,46 @@ def main():
         assert len(backups) == 2 and all((path / "SKILL.md").is_file() for path in backups)
         parsed = tomllib.loads(configuration.read_text(encoding="utf-8"))
         assert parsed["model"] == "keep-model" and parsed["mcp_servers"]["other"] == {"command": "other"}
+        executable = str(Path(args.bundle).resolve() / "MapleMate-mcp.exe")
+        expected = {"command": executable, "args": ["--data-dir", str(directory / "state"), "serve"]}
+        original = {"preferences": {"theme": "dark"}, "mcpServers": {
+            "other": {"command": "keep.exe", "args": ["keep"]}}}
+        standard = Path(environment["APPDATA"]) / "Claude" / "claude_desktop_config.json"
+        standard.parent.mkdir(parents=True)
+        standard.write_text(json.dumps(original), encoding="utf-8")
+        claude_command = [executable, "--data-dir", str(directory / "state"), "connect", "claude-desktop"]
+        result = subprocess.run(claude_command, env=environment, capture_output=True, timeout=20,
+                                creationflags=subprocess.CREATE_NO_WINDOW)
+        assert result.returncode == 0 and not result.stderr, "Standard Claude registration failed"
+        saved = json.loads(standard.read_text(encoding="utf-8"))
+        assert saved["mcpServers"]["maple-mcp"] == expected
+        assert saved["mcpServers"]["other"] == original["mcpServers"]["other"]
+        assert saved["preferences"] == original["preferences"]
+
+        # Reproduce the report: the legacy file says registered, while Claude
+        # actually reads its MSIX container and has no MapleMate entry there.
+        legacy_bytes = standard.read_bytes()
+        packaged = (Path(environment["LOCALAPPDATA"]) / "Packages" / "Claude_pzs8sxrjxfjjc" /
+                    "LocalCache" / "Roaming" / "Claude" / "claude_desktop_config.json")
+        packaged.parent.mkdir(parents=True)
+        packaged.write_text(json.dumps(original), encoding="utf-8")
+        for _ in range(2):
+            result = subprocess.run(claude_command, env=environment, capture_output=True, timeout=20,
+                                    creationflags=subprocess.CREATE_NO_WINDOW)
+            assert result.returncode == 0 and not result.stderr, "MSIX Claude registration failed"
+        saved = json.loads(packaged.read_text(encoding="utf-8"))
+        assert saved["mcpServers"].get("maple-mcp") == expected, "MCP not registered in Claude MSIX config"
+        assert saved["preferences"] == original["preferences"]
+        assert saved["mcpServers"]["other"] == original["mcpServers"]["other"]
+        assert standard.read_bytes() == legacy_bytes
+        backups = list(packaged.parent.glob("*.bak"))
+        assert len(backups) == 1 and json.loads(backups[0].read_text(encoding="utf-8")) == original
+
         print(json.dumps({"bundled_single_skill_installed": True, "two_old_skills_migrated": True,
                           "references_match_bundle": True, "backup_outside_discovery": True,
-                          "repeated_install_idempotent": True, "unrelated_config_preserved": True}))
+                          "repeated_install_idempotent": True, "unrelated_config_preserved": True,
+                          "claude_standard_registration": True, "claude_msix_registration": True,
+                          "claude_msix_existing_settings_preserved": True}))
     finally:
         assert directory.resolve().parent == TEST_ROOT.resolve()
         if directory.exists():

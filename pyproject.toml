@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "maplemate"
-version = "1.0.1"
+version = "1.0.2"
 description = "Windows tray companion with Maple-mcp and MapleStory skills"
 requires-python = ">=3.11"
 license = "MIT"

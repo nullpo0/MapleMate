@@ -70,12 +70,12 @@ smoke 검증은 격리된 프로필·데이터와 합성 이미지를 사용합�
 
 ## 릴리스
 
-빌드 의존성이 없다면 `python -m pip install -e ".[build]"`를 먼저 실행합니다. 빌드 결과는 `dist/MapleMate/`, `dist/MapleMate-1.0.1-windows-x64.zip`, `.zip.sha256`입니다. 빌드 스크립트가 버전·동봉 skill·체크섬·ZIP 구조·개인 데이터 제외를 검사합니다. 실행 중인 이전 bundle을 덮어쓰려면 먼저 트레이와 해당 MCP 연결을 종료하거나 `--output-dir dist/new-release`를 사용하세요.
+빌드 의존성이 없다면 `python -m pip install -e ".[build]"`를 먼저 실행합니다. 빌드 결과는 `dist/MapleMate/`, `dist/MapleMate-1.0.2-windows-x64.zip`, `.zip.sha256`입니다. 빌드 스크립트가 버전·동봉 skill·체크섬·ZIP 구조·개인 데이터 제외를 검사합니다. 실행 중인 이전 bundle을 덮어쓰려면 먼저 트레이와 해당 MCP 연결을 종료하거나 `--output-dir dist/new-release`를 사용하세요.
 
 1. `pyproject.toml`, `src/maplemate/__init__.py`, README와 CHANGELOG의 릴리스 버전을 맞춥니다.
 2. 테스트와 frozen MCP·skill·트레이 검증을 통과시킵니다.
 3. GitHub 저장소에 소스를 올린 뒤 **Windows release**를 수동 실행하여 artifact를 확인합니다.
-4. 같은 버전의 태그(`v1.0.1`)를 push하면 ZIP과 체크섬이 첨부된 초안 릴리스가 만들어집니다.
+4. 같은 버전의 태그(`v1.0.2`)를 push하면 ZIP과 체크섬이 첨부된 초안 릴리스가 만들어집니다.
 5. 초안 내용을 확인하고 GitHub에서 Publish release를 누릅니다.
 
 일반 push와 pull request에서도 단위 테스트와 소스 stdio 검증을 수행합니다. 릴리스 버전과 태그가 다르면 배포 작업이 빌드 전에 실패합니다.
@@ -87,3 +87,7 @@ smoke 검증은 격리된 프로필·데이터와 합성 이미지를 사용합�
 자체 코드와 skill은 MIT이며 project.license와 LICENSE로 표시합니다. 빌드 시 package_notices.py가 실제 의존성의 버전·라이선스 파일을 수집하고 Python·Tcl·Tk 고지, pystray의 원본 Python 소스와 앱 소스를 동봉합니다. THIRD_PARTY_NOTICES.md의 재빌드 절차도 같은 ZIP에 넣습니다. 수집이 불완전하거나 파일 해시가 바뀌면 릴리스 검증이 실패합니다.
 
 이미 공개된 v1.0.0 태그는 변경하지 않습니다. 라이선스 자료를 추가한 패치 릴리스는 v1.0.1입니다.
+
+## Claude Desktop 연결 경로
+
+client_paths.py의 경로 탐색을 MCP 등록과 기존 데이터 폴더 재사용에 함께 사용합니다. 일반 설치는 APPDATA/Claude, MSIX는 LOCALAPPDATA/Packages/Claude_*/LocalCache/Roaming/Claude의 claude_desktop_config.json을 사용합니다. 패키지 경로가 있으면 일반 경로에 남은 등록 대신 패키지 설정을 확인합니다. 여러 패키지 경로가 있으면 임의로 고르지 않고 등록을 중단합니다. 등록 상태는 설정 파일 검사 결과이며 실제 Claude MCP 연결 성공을 뜻하지 않습니다.

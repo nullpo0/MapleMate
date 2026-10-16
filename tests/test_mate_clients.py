@@ -228,7 +228,7 @@ class ClientTests(unittest.TestCase):
         other = Config.load(self.directory / "other")
         (other.data_dir / "state.sqlite3").touch()
         ClaudeDesktopSetup(other, appdata / "Claude").install()
-        with patch.dict(os.environ, {"CODEX_HOME": str(codex_dir), "APPDATA": str(appdata)}):
+        with patch.dict(os.environ, {"CODEX_HOME": str(codex_dir), "APPDATA": str(appdata), "LOCALAPPDATA": str(appdata)}):
             self.assertIsNone(linked_data_directory())
             (appdata / "Claude" / "claude_desktop_config.json").unlink()
             connector = CodexSetup(self.config, codex_dir)
